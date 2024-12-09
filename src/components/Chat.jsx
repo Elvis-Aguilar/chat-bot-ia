@@ -5,6 +5,10 @@ import {
   MessageList,
   Message,
   MessageInput,
+  Avatar,
+  ConversationHeader,
+  StarButton,
+  InfoButton,
 } from "@chatscope/chat-ui-kit-react";
 import * as use from "@tensorflow-models/universal-sentence-encoder";
 import * as tf from "@tensorflow/tfjs";
@@ -130,12 +134,12 @@ const Chat = () => {
   };
 
   return (
-    <div className="h-screen flex justify-center items-center">
+    <div className="w-full flex justify-center items-start h-screen mt-2">
       <MainContainer
         style={{
           width: "100%",
-          maxWidth: "600px",
-          height: "80vh",
+          maxWidth: "800px",
+          height: "88vh",
           maxHeight: "600px",
           backgroundColor: "#1e1e1e",
           borderRadius: "12px",
@@ -143,6 +147,37 @@ const Chat = () => {
         }}
       >
         <ChatContainer>
+          <ConversationHeader
+            style={{
+              padding: "1px",
+              backgroundColor: "#1e1e1e",
+            }}
+          >
+            <Avatar
+              name="Emily"
+              title="Emely Chat Bot IA"
+              src="https://chatscope.io/storybook/react/assets/emily-xzL8sDL2.svg"
+              style={{
+                padding: "4px",
+                backgroundColor: "#1e1e1e",
+              }}
+            />
+            <ConversationHeader.Content
+            >
+              <span
+                style={{
+                  alignSelf: 'flex-center',
+                  color: '#fff'
+                }}
+              >
+                Emely Chat Bot
+              </span>
+            </ConversationHeader.Content>
+            <ConversationHeader.Actions>
+              <StarButton title="Add to favourites" />
+              <InfoButton title="Show info" />
+            </ConversationHeader.Actions>
+          </ConversationHeader>
           <MessageList
             style={{
               flex: "1 1 auto",
@@ -161,7 +196,14 @@ const Chat = () => {
                   direction: msg.sender === "Usuario" ? "outgoing" : "incoming",
                   position: "normal",
                 }}
-              />
+              >
+                {msg.sender !== "Usuario" && (
+                  <Avatar
+                    name="Emily"
+                    src="https://chatscope.io/storybook/react/assets/emily-xzL8sDL2.svg"
+                  />
+                )}
+              </Message>
             ))}
           </MessageList>
           <MessageInput

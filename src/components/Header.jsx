@@ -3,7 +3,7 @@
 const Header = () => {
     return (
       <header className="bg-sidebar text-text py-4 px-6 shadow-md">
-        <h1 className="text-lg font-semibold">Tu Chatbot</h1>
+        <h1 className="text-lg font-semibold">Emely Chat Bot IA1-EDV</h1>
       </header>
     );
   };
